@@ -4,10 +4,6 @@ const initArr = [1, 2, 3, 4, 5];
 function ChunkAray(arr) {
   return arr.reduce((acc, item, index) => {
     const chunkIndex = Math.floor(index / 2);
-    // console.log(acc);
-    // console.log(chunkIndex);
-    // console.log(item);
-    // console.log(!acc[chunkIndex]);
     if (!acc[chunkIndex]) {
       acc[chunkIndex] = [];
     }
@@ -26,7 +22,8 @@ const arr2 = [2, 3, 6];
 const diffItem = (arr = [], otherArr = []) =>
   arr.reduce(
     (accurment, currentValue) => (
-      !otherArr.includes(currentValue) && accurment.push(currentValue), accurment
+      !otherArr.includes(currentValue) && accurment.push(currentValue),
+      accurment
     ),
     []
   );
@@ -60,11 +57,11 @@ console.log(countArr(listCount));
 let arrayList = [12, 45, 21, 65, 38, 76, 108, 43];
 
 let maxNum = arrayList.reduce((prev, current) => {
-  return Math.max(prev, current);
+  return prev > current ? prev : current;
 });
 console.log(maxNum); //108
 let minNum = arrayList.reduce((prev, current) => {
-  return Math.min(prev, current);
+  return prev < current ? prev : current;
 });
 console.log(minNum); //12
 
@@ -80,10 +77,10 @@ let arrGroup = [
 function groupBy(objectArray, property) {
   return objectArray.reduce((acc, obj) => {
     const key = obj[property];
-    console.log(key);
     const curGroup = acc[key] ?? [];
 
     return { ...acc, [key]: [...curGroup, obj] };
   }, {});
 }
 console.log(groupBy(arrGroup, "area"));
+
