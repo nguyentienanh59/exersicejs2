@@ -23,7 +23,15 @@ console.log(initArr);
 const arr1 = [1, 2, 3, 4, 5];
 const arr2 = [2, 3, 6];
 
-function Getdifference(arr1, arr2) {}
+const diffItem = (arr = [], otherArr = []) =>
+  arr.reduce(
+    (accurment, currentValue) => (
+      !otherArr.includes(currentValue) && accurment.push(currentValue), accurment
+    ),
+    []
+  );
+
+console.log([...diffItem(arr1, arr2), ...diffItem(arr2, arr1)]);
 
 // bai 3
 let array = [2, 1, 0, 3, 2, 1, 2];
